@@ -6,12 +6,12 @@
 /* so re-theming means editing this block rather than hunting classes.    */
 /* ---------------------------------------------------------------------- */
 :root {
-  --font-serif: "Source Serif 4", "Iowan Old Style", Georgia, "Times New Roman", serif;
-  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-serif: "Libertinus Serif", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-sans: "Libertinus Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
 
-  --content-max: 60rem;
+  --content-max: 62rem;
   --radius-sm: 4px;
-  --radius-md: 10px;
+  --radius-md: 8px;
 
   --step-small: 0.875rem;
   --step-eyebrow: 0.78rem;
@@ -21,44 +21,44 @@
   --step-title: clamp(2.1rem, 1.5rem + 2.4vw, 3.2rem);
 
   /* light theme (default) */
-  --color-bg: #fbfbf9;
-  --color-surface: #f1f0eb;
-  --color-ink: #1c1e21;
-  --color-muted: #5b6169;
-  --color-line: #e1dfd6;
-  --color-accent: #33469b;
+  --color-bg: #f7f4ef;
+  --color-surface: #efece4;
+  --color-ink: #000000;
+  --color-muted: #524c48;
+  --color-line: #dcd7cc;
+  --color-accent: #a6192e;
   --color-accent-ink: #ffffff;
-  --color-accent-soft: #e9ebf7;
-  --color-highlight: #9c6b12;
-  --color-highlight-soft: #f6ecd7;
+  --color-accent-soft: #faecef;
+  --color-highlight: #8c581e;
+  --color-highlight-soft: #f4e9db;
 }
 
 :root:not([data-theme="light"]) {
   @media (prefers-color-scheme: dark) {
-    --color-bg: #17181c;
-    --color-surface: #1f2126;
-    --color-ink: #f2f1ed;
-    --color-muted: #9aa0aa;
-    --color-line: #2d3036;
-    --color-accent: #8b9bf0;
-    --color-accent-ink: #14162a;
-    --color-accent-soft: #262a45;
-    --color-highlight: #e0b45c;
-    --color-highlight-soft: #3a3120;
+    --color-bg: #2b2f33;
+    --color-surface: #353a3f;
+    --color-ink: #ffffff;
+    --color-muted: #9da5b0;
+    --color-line: #41474e;
+    --color-accent: #e0475e;
+    --color-accent-ink: #ffffff;
+    --color-accent-soft: #3d1b22;
+    --color-highlight: #e2b062;
+    --color-highlight-soft: #3d3120;
   }
 }
 
 :root[data-theme="dark"] {
-  --color-bg: #17181c;
-  --color-surface: #1f2126;
-  --color-ink: #f2f1ed;
-  --color-muted: #9aa0aa;
-  --color-line: #2d3036;
-  --color-accent: #8b9bf0;
-  --color-accent-ink: #14162a;
-  --color-accent-soft: #262a45;
-  --color-highlight: #e0b45c;
-  --color-highlight-soft: #3a3120;
+  --color-bg: #2b2f33;
+  --color-surface: #353a3f;
+  --color-ink: #ffffff;
+  --color-muted: #9da5b0;
+  --color-line: #41474e;
+  --color-accent: #e0475e;
+  --color-accent-ink: #ffffff;
+  --color-accent-soft: #3d1b22;
+  --color-highlight: #e2b062;
+  --color-highlight-soft: #3d3120;
 }
 
 /* ---------------------------------------------------------------------- */
@@ -326,24 +326,18 @@ p:last-child {
 }
 
 .hero-photo {
-  width: 9rem;
-  height: 9rem;
+  width: 16rem;
   border-radius: var(--radius-md);
   overflow: hidden;
+  border: 1px solid var(--color-line);
 }
 
-.avatar {
+.hero-photo img {
+  /* Full portrait, no cropping — width drives the size, height follows
+     the image's own aspect ratio. */
+  display: block;
   width: 100%;
-  height: 100%;
-  display: grid;
-  place-items: center;
-  background: var(--color-accent-soft);
-  color: var(--color-accent);
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-md);
-  font-family: var(--font-sans);
-  font-weight: 700;
-  font-size: 2.4rem;
+  height: auto;
 }
 
 @media (max-width: 640px) {
@@ -352,8 +346,7 @@ p:last-child {
   }
   .hero-photo {
     order: -1;
-    width: 5rem;
-    height: 5rem;
+    width: 10rem;
   }
 }
 
@@ -377,12 +370,13 @@ p:last-child {
   border-radius: 999px;
   border: 1px solid var(--color-line);
   color: var(--color-muted);
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
   text-decoration: none;
   background: var(--color-surface);
+}
+
+.social-badge svg {
+  width: 1.05rem;
+  height: 1.05rem;
 }
 
 .social-badge:hover {
@@ -585,6 +579,11 @@ p:last-child {
 
 .teach-item p {
   margin-top: 0.5rem;
+}
+
+.teach-item p a {
+  color: var(--color-accent);
+  text-decoration-color: color-mix(in srgb, var(--color-accent) 40%, transparent);
 }
 
 /* ---------------------------------------------------------------------- */

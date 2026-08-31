@@ -18,7 +18,7 @@ import { mentoring } from "../data/mentoring";
             <p class="meta">
               {m.role} · {m.institution} · {m.period}
             </p>
-            {m.description && <p>{m.description}</p>}
+            {m.description && <p set:html={m.description} />}
           </li>
         ))
       }

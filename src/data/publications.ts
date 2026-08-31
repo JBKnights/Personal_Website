@@ -55,6 +55,7 @@ export const publications: Publication[] = [
     featured: true,
     links: [
       { label: "ArXiv", href: "https://arxiv.org/abs/2603.01475"},
+      { label: "Code", href: "https://github.com/csiro-robotics/WildCross"},
       { label: "Project Page", href: "https://csiro-robotics.github.io/WildCross" },
     ],
     image: "/images/publications/wildcross.gif",
@@ -106,6 +107,7 @@ export const publications: Publication[] = [
     authors: [{ name: "Joshua Knights", self: true }, { name: "et al." }],
     venue: "IEEE Robotics and Automation Letters (RA-L)",
     year: 2024,
+    featured: true,
     // NOTE: dropped the "Code" link that was here — github.com/csiro-robotics/GeoAdapt
     // 404s and isn't in the csiro-robotics org's repo list, so it looks like the
     // code either isn't public or lives somewhere else. Let me know the right URL.
@@ -165,7 +167,9 @@ export const publications: Publication[] = [
     authors: [{ name: "D. N. P. Oliveira" }, { name: "Joshua Knights", self: true }, { name: "et al." }],
     venue: "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)",
     year: 2025,
-    links: [{ label: "arXiv", href: "https://arxiv.org/abs/2503.03599" }],
+    links: [
+      { label: "arXiv", href: "https://arxiv.org/abs/2503.03599" },
+      { label: "Code", href: "https://github.com/ethz-mrl/regrace/tree/main"}],
     image: "/images/publications/regrace.jpg",
   },
   {
