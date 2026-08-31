@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { mentoring } from "../data/mentoring";
+---
+
+<BaseLayout title="Student Projects" description="Projects ">
+  <div class="wrap page-head">
+    <h1>Students Mentored</h1>
+    <p>Here are some projects from the amazing Honors and Masters students that I've supervised!</p>
+  </div>
+
+  <div class="wrap">
+    <ul class="teach-list">
+      {
+        mentoring.map((m) => (
+          <li class="teach-item">
+            <h3>{m.student}</h3>
+            <p class="meta">
+              {m.role} · {m.institution} · {m.period}
+            </p>
+            {m.description && <p>{m.description}</p>}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</BaseLayout>

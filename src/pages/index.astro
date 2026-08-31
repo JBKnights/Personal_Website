@@ -1,0 +1,59 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Socials from "../components/Socials.astro";
+import Avatar from "../components/Avatar.astro";
+import PublicationCard from "../components/PublicationCard.astro";
+import { site } from "../data/site";
+import { news } from "../data/news";
+import { publications } from "../data/publications";
+
+const featured = publications.filter((p) => p.featured);
+---
+
+<BaseLayout>
+  <section class="hero wrap">
+    <div class="hero-text">
+      <h1>{site.name}</h1>
+      <div class="meta-line">
+        <span>{site.role}</span>
+        <span class="meta-sep" aria-hidden="true">·</span>
+        <span>{site.institution}</span>
+      </div>
+      <Socials />
+      <div class="bio">
+        {site.bio.map((p) => <p set:html={p} />)}
+      </div>
+    </div>
+    <Avatar />
+  </section>
+
+  <hr class="divider wrap" />
+
+  <section class="wrap">
+    <div class="section-head">
+      <h2>News</h2>
+    </div>
+    <ul class="news-list">
+      {
+        news.map((item) => (
+          <li class="news-item">
+            <span class="news-date">{item.label}</span>
+            <span set:html={item.html} />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <hr class="divider wrap" />
+
+  <section class="wrap">
+    <div class="section-head">
+      <h2>Selected Publications</h2>
+      <a href="/publications">All publications →</a>
+    </div>
+    <ul class="pub-list">
+      {featured.map((pub) => <PublicationCard pub={pub} />)}
+    </ul>
+  </section>
+</BaseLayout>

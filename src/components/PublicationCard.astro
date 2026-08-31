@@ -1,0 +1,48 @@
+---
+import type { Publication } from "../data/publications";
+
+export interface Props {
+  pub: Publication;
+}
+
+const { pub } = Astro.props;
+
+const authorLine = pub.authors
+  .map((a) => (a.self ? `<strong>${a.name}</strong>` : a.name))
+  .reduce((acc, name, i, arr) => {
+    if (i === 0) return name;
+    if (i === arr.length - 1) return `${acc}, and ${name}`;
+    return `${acc}, ${name}`;
+  }, "");
+
+const slug = pub.title
+  .toLowerCase()
+  .replace(/[^a-z0-9]+/g, "-")
+  .replace(/(^-|-$)/g, "");
+---
+
+<li class="pub-card" id={slug}>
+  {
+    pub.image && (
+      <div class="pub-thumb">
+        <img src={pub.image} alt={`Figure from “${pub.title}”`} loading="lazy" />
+      </div>
+    )
+  }
+  <div class="pub-body">
+    <h3>{pub.title}</h3>
+    <p class="pub-authors" set:html={authorLine} />
+    <p class="pub-venue">{pub.venue}, {pub.year}</p>
+    {
+      pub.links?.length ? (
+        <div class="pub-links">
+          {pub.links.map((l) => (
+            <a href={l.href} target="_blank" rel="noopener noreferrer">
+              {l.label}
+            </a>
+          ))}
+        </div>
+      ) : null
+    }
+  </div>
+</li>
