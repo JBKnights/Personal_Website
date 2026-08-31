@@ -4,8 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  // TODO: set this to your published site URL (needed for correct sitemap/canonical/OG tags)
-  site: "https://example.com",
+  site: "https://jknights.info",
   vite: {
     plugins: [tailwindcss()],
   },
